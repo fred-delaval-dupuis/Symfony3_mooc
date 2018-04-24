@@ -1,0 +1,9 @@
+{% extends "OCUserBundle::layout.html.twig" %}
+
+{% block menu_login %}
+    class="active"
+{% endblock %}
+
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}

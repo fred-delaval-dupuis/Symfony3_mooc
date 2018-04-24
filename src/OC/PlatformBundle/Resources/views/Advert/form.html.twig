@@ -1,0 +1,115 @@
+<h3>Formulaire d'annonce</h3>
+
+
+<div class="well">
+    {#{{ form(form) }}#}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    {# Génération du label + error + widget pour un champ. #}
+    {% if form.date is defined %} {# dans le cas d'un edit, "date" n'est pas inclus dans le form #}
+        <div class="form-group row">
+            {# Génération du label. #}
+            {{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.date) }}
+
+            {# Génération de l'input. #}
+            <div class="col-sm-10">
+                {{ form_widget(form.date) }}
+            </div>
+        </div>
+    {% endif %}
+
+    {# Génération manuelle et éclatée : #}
+    <div class="form-group row">
+        {# Génération du label. #}
+        {{ form_label(form.title, "Titre de l'annonce", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.title) }}
+
+        {# Génération de l'input. #}
+        <div class="col-sm-10">
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group row">
+        {{ form_label(form.content, "Contenu de l'annonce", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.content) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group row">
+        {{ form_label(form.user, "Auteur ", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.user) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    {% if form.published is defined %} {# le champ peut ne pas être dans le form en cas d'edit #}
+        <div class="form-group row">
+            {{ form_errors(form.published) }}
+            <div class="col-sm-2  col-form-label"></div>
+            <div class="col-sm-10">
+                {{ form_widget(form.published) }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="form-group row">
+        {{ form_label(form.image, "Image", {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+    </div>
+
+    {#
+    <div class="form-group row">
+        {{ form_label(form.image.url, 'Url', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.image.url) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.image.url, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.image.alt, 'Alt', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.image.alt) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.image.alt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    #}
+
+    <div class="form-group row">
+        {{ form_label(form.image.file, 'Fichier', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.image.file) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.image.file) }}
+        </div>
+    </div>
+
+    <div class="form-group row">
+        {{ form_label(form.categories, 'Catégories', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        {{ form_errors(form.categories) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.categories) }}
+        </div>
+    </div>
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits. #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+</div>

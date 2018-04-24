@@ -1,0 +1,11 @@
+oc_core:
+    resource: "@OCCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+oc_platform:
+    resource: "@OCPlatformBundle/Resources/config/routing.yml"
+    prefix:   /platform
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+

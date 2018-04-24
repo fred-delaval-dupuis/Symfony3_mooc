@@ -1,0 +1,16 @@
+{% extends "OCCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Erreur - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="alert alert-info">
+        <p>
+            Une erreur est survenue. Nos équipes sont mobilisées pour la résoudre. Nous vous remercions de votre patience.
+        </p>
+        <p>
+            <a href="{{ path('oc_core_home') }}">Retour à l'accueil &raquo;</a>
+        </p>
+    </div>
+{% endblock %}

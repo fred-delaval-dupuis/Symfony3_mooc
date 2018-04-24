@@ -1,0 +1,23 @@
+{% extends "OCCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block menu_home %}
+    class="active"
+{% endblock %}
+
+{% block left_sidebar %}
+    <h3>Les annonces</h3>
+    <ul class="nav nav-pills nav-stacked">
+        <li><a href="{{ path('oc_platform_home') }}">Toutes les annonces</a></li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    {# Affichage des dernières annonces #}
+
+    <h2>Les dernières annonces</h2>
+    {{ render(controller('OCPlatformBundle:Advert:menu', {'limit' : 3})) }}
+{% endblock %}
